@@ -14,6 +14,17 @@ fun main(args:Array<String>){
     var x5=Circle(2.0)
     x5.find_area()
     x5.print_area()
+
+    var x6=AnyShape(5.0,10.0)
+    x6.find_any_area(object:anyArea{
+        override fun find_any_area(w: Double, h: Double): Double {
+         return h*w*0.5
+        }
+
+    })
+    x6.print_area()
+
+
 }
 
 open class shape2(var width:Double=0.0 ,var height:Double=0.0){
@@ -31,11 +42,25 @@ open class Rectangle(var w:Double=0.0,var h:Double=0.0):shape2(w,h){
     }
 }
 open class Square( var w2:Double=0.0):Rectangle(w2,w2)
-class Circle(var r:Double=0.0):Square(r){
+open class Circle(var r:Double=0.0):Square(r){
     override fun find_area() {
         area=Math.PI * r * r
     }
 }
+
+class AnyShape(w:Double=0.0,h:Double=0.0):Rectangle(w,h)
+{
+   fun find_any_area(Calculator:anyArea){
+       area=Calculator.find_any_area(width,height)
+   }
+}
+
+interface anyArea{
+    fun find_any_area(w:Double,h:Double):Double
+}
+
+
+
 
 
 
