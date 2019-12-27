@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">แปลงหน่วย ๒</string>
+    <string name="inch_to_cm">นิ้ว เป็น ซม</string>
+    <string name="cm_to_inch">ซม เป็น นิ้ว</string>
+    <string name="calculate">ทำการแปลง</string>
+    <string name="exit">จบโปรแกรม</string>
+    <string name="cm">ซม</string>
+    <string name="inch">นิ้ว</string>
+</resources>
