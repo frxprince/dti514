@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -37,6 +38,17 @@ lateinit var Mp:MediaPlayer
       Mp.setDataSource(this, Uri.parse("http://www.drpaween.com/ohm/mp3test.mp3"))
       Mp.prepare()
   }
+if(ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)!=
+        PackageManager.PERMISSION_GRANTED)
+    ActivityCompat.requestPermissions(this,
+        arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1234)
+button4.setOnClickListener {
+    Mp= MediaPlayer()
+    //Mp.setDataSource("/mnt/sdcard/music.mp3")
+    Mp.setDataSource(Environment.getExternalStorageDirectory().path+"/music.mp3")
+    Mp.prepare()
+}
+
 
 
     }
